@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFU-CV-001 | Ziad Mustafa Muhammed</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    },
+                    colors: {
+                        medical: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        caution: '#f59e0b',
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L0 0 0 20' fill='none' stroke='%23e2e8f0' stroke-width='0.5'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tech-font {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Custom Scrollbar for a technical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .accordion-content.open {
+            max-height: 500px;
+            /* Arbitrary large number for expansion */
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased bg-grid-pattern relative">
+
+    <!-- Mobile Header -->
+    <div
+        class="md:hidden fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 px-4 py-3 flex justify-between items-center shadow-sm">
+        <div class="tech-font text-medical-800 font-bold text-lg">IFU-CV-001</div>
+        <button id="mobile-menu-btn" class="text-slate-600 hover:text-medical-600 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar"
+        class="fixed inset-y-0 left-0 bg-white w-64 border-r border-slate-200 shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto pt-16 md:pt-0 flex flex-col">
+        <div class="p-6 border-b border-slate-100 hidden md:block">
+            <h1 class="tech-font text-2xl font-bold text-medical-800 tracking-tight">IFU-CV-001</h1>
+            <p
+                class="text-xs text-slate-500 font-semibold tracking-wider mt-1 bg-slate-100 inline-block px-2 py-1 rounded">
+                REV 1.0 | 2026</p>
+        </div>
+
+        <div class="flex-1 px-4 py-6 space-y-1 nav-links">
+            <a href="#cover"
+                class="block px-3 py-2 text-sm rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors text-medical-600 bg-medical-50"><i
+                    class="fas fa-file-medical w-6 text-center mr-2"></i> Document Control</a>
+            <a href="#intended-use"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-bullseye w-6 text-center mr-2"></i> 1. Intended Use</a>
+            <a href="#product-desc"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-microscope w-6 text-center mr-2"></i> 2. Product Description</a>
+            <a href="#kit-components"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-vials w-6 text-center mr-2"></i> 3. Kit Components</a>
+            <a href="#storage"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-graduation-cap w-6 text-center mr-2"></i> 4. Storage & Stability</a>
+            <a href="#materials"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-dna w-6 text-center mr-2"></i> 5. Materials & Equip.</a>
+            <a href="#reaction"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-cogs w-6 text-center mr-2"></i> 6. Reaction Setup</a>
+            <a href="#troubleshooting"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-wrench w-6 text-center mr-2"></i> 7. Troubleshooting</a>
+            <a href="#support"
+                class="block px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-medical-50 hover:text-medical-600 font-medium transition-colors"><i
+                    class="fas fa-headset w-6 text-center mr-2"></i> 8. Tech Support</a>
+        </div>
+
+        <div class="p-4 border-t border-slate-200">
+            <div class="bg-yellow-50 border-l-4 border-caution p-3 rounded-r text-xs text-yellow-800">
+                <i class="fas fa-exclamation-triangle mr-1"></i> <strong>NOTICE:</strong> For professional use only.
+            </div>
+        </div>
+    </nav>
+
+    <main class="md:ml-64 pt-16 md:pt-0 min-h-screen">
+        <div class="max-w-4xl mx-auto p-6 md:p-12 space-y-16">
+
+            <section id="cover" class="fade-in-section pt-4">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden relative">
+                    <!-- Top accent bar -->
+                    <div class="h-2 w-full bg-medical-600"></div>
+
+                    <div class="p-8 md:p-10">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-200 pb-6 mb-6">
+                            <div>
+                                <h2 class="text-3xl font-bold text-slate-900">PROFESSIONAL PORTFOLIO</h2>
+                                <h3 class="text-xl text-slate-500 mt-1 font-light">& TECHNICAL COMPETENCY DOCUMENT</h3>
+                            </div>
+                            <div
+                                class="mt-4 md:mt-0 px-4 py-2 bg-slate-800 text-white rounded text-sm font-bold tracking-widest text-center shadow-inner">
+                                <i class="fas fa-lock mr-2 text-medical-500"></i> FOR PROFESSIONAL USE ONLY
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h1 class="text-4xl font-extrabold text-medical-800 mb-2">Ziad Mustafa Muhammed</h1>
+                                <p class="text-lg font-medium text-slate-600 mb-6 border-l-4 border-medical-500 pl-3">
+                                    Field Application & Sales Specialist<br><span
+                                        class="text-sm text-slate-500">Molecular Biology | In Vitro Diagnostics
+                                        (IVD)</span></p>
+
+                                <p
+                                    class="text-sm text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                    <strong>Document Purpose:</strong> Technical portfolio documenting professional
+                                    qualifications, practical laboratory expertise, field application experience,
+                                    commercial contributions, scientific research, and continuous competency development
+                                    in biotechnology and molecular diagnostics.
+                                </p>
+                            </div>
+
+                            <div class="bg-slate-50 rounded-lg p-5 border border-slate-200 shadow-sm">
+                                <h4
+                                    class="tech-font text-sm font-bold text-slate-500 mb-4 border-b border-slate-200 pb-2">
+                                    <i class="fas fa-barcode mr-2"></i> DOCUMENT CONTROL</h4>
+                                <table class="w-full text-sm">
+                                    <tbody>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="py-2 text-slate-500 font-medium">Doc ID / Version</td>
+                                            <td class="py-2 tech-font text-right font-bold">IFU-CV-001 / V 1.0</td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="py-2 text-slate-500 font-medium">Issue Year</td>
+                                            <td class="py-2 text-right">2026</td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="py-2 text-slate-500 font-medium">Location</td>
+                                            <td class="py-2 text-right">Elqalyubia, Egypt</td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="py-2 text-slate-500 font-medium">Email</td>
+                                            <td class="py-2 text-right text-medical-600"><a
+                                                    href="mailto:ziadmustafamuhammed@gmail.com">ziadmustafamuhammed@gmail.com</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="py-2 text-slate-500 font-medium">Phone</td>
+                                            <td class="py-2 text-right tech-font">+20 100 247 0735</td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="py-2 text-slate-500 font-medium">LinkedIn</td>
+                                            <td class="py-2 text-right text-medical-600"><a
+                                                    href="https://linkedin.com/in/ziad-mustafa-abdelwahab"
+                                                    target="_blank">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 text-slate-500 font-medium">ORCID</td>
+                                            <td class="py-2 text-right text-medical-600"><a
+                                                    href="https://orcid.org/0009-0009-8374-8885"
+                                                    target="_blank">0009-0009-8374-8885</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="intended-use" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        1</div>
+                    <h2 class="text-2xl font-bold text-slate-800">INTENDED USE</h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8">
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3 border-b border-slate-100 pb-2">1.1
+                            Professional Purpose</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            This document presents the professional qualifications, technical competencies, and
+                            experience of Ziad Mustafa Muhammed, a biotechnology graduate specializing in field
+                            application support, technical sales, and molecular diagnostic workflows. Intended for
+                            recruitment, professional evaluation, and business development within biotechnology, IVD,
+                            life science, and healthcare technology organizations.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3 border-b border-slate-100 pb-2">1.2 Career
+                            Objective</h3>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-medical-500 mt-1 mr-3"></i>
+                                Contribute to a reputable organization combining scientific knowledge with practical
+                                laboratory experience and commercial development.</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-medical-500 mt-1 mr-3"></i>
+                                Support implementation and optimization of molecular diagnostic technologies.</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-medical-500 mt-1 mr-3"></i>
+                                Translate complex scientific product specifications into practical customer value.</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-medical-500 mt-1 mr-3"></i>
+                                Expand expertise in molecular diagnostics, genomics, and bioinformatics.</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-medical-500 mt-1 mr-3"></i>
+                                Pursue international professional experience, with full willingness to travel and
+                                relocate.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-2">1.3 Target
+                            Professional Environments</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div
+                                class="border border-slate-100 rounded-lg p-4 bg-slate-50 hover:bg-medical-50 transition-colors">
+                                <h4 class="font-bold text-slate-800 text-sm mb-1"><i
+                                        class="fas fa-dna text-medical-600 mr-2"></i> Molecular Diagnostics</h4>
+                                <p class="text-xs text-slate-500">PCR, qPCR, nucleic acid extraction, diagnostic
+                                    workflows</p>
+                            </div>
+                            <div
+                                class="border border-slate-100 rounded-lg p-4 bg-slate-50 hover:bg-medical-50 transition-colors">
+                                <h4 class="font-bold text-slate-800 text-sm mb-1"><i
+                                        class="fas fa-vial text-medical-600 mr-2"></i> In Vitro Diagnostics (IVD)</h4>
+                                <p class="text-xs text-slate-500">Diagnostic systems, assay implementation, customer
+                                    support</p>
+                            </div>
+                            <div
+                                class="border border-slate-100 rounded-lg p-4 bg-slate-50 hover:bg-medical-50 transition-colors">
+                                <h4 class="font-bold text-slate-800 text-sm mb-1"><i
+                                        class="fas fa-chart-line text-medical-600 mr-2"></i> Technical Sales & Biz Dev
+                                </h4>
+                                <p class="text-xs text-slate-500">Scientific product demos, solution positioning, market
+                                    intelligence</p>
+                            </div>
+                            <div
+                                class="border border-slate-100 rounded-lg p-4 bg-slate-50 hover:bg-medical-50 transition-colors">
+                                <h4 class="font-bold text-slate-800 text-sm mb-1"><i
+                                        class="fas fa-user-md text-medical-600 mr-2"></i> Field Application Science</h4>
+                                <p class="text-xs text-slate-500">User training, workflow optimization, troubleshooting
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="product-desc" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        2</div>
+                    <h2 class="text-2xl font-bold text-slate-800">PRODUCT DESCRIPTION</h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8">
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-medical-50 rounded-lg p-4 text-center border border-medical-100 shadow-sm">
+                            <div class="text-2xl font-black text-medical-600 mb-1">80+</div>
+                            <div class="text-xs font-semibold text-slate-600 uppercase tracking-wide">Lab Demos</div>
+                        </div>
+                        <div class="bg-medical-50 rounded-lg p-4 text-center border border-medical-100 shadow-sm">
+                            <div class="text-2xl font-black text-medical-600 mb-1">2,000</div>
+                            <div class="text-xs font-semibold text-slate-600 uppercase tracking-wide">Samples Handled
+                            </div>
+                        </div>
+                        <div class="bg-medical-50 rounded-lg p-4 text-center border border-medical-100 shadow-sm">
+                            <div class="text-2xl font-black text-medical-600 mb-1">25+</div>
+                            <div class="text-xs font-semibold text-slate-600 uppercase tracking-wide">Client Accounts
+                            </div>
+                        </div>
+                        <div class="bg-medical-50 rounded-lg p-4 text-center border border-medical-100 shadow-sm">
+                            <div class="text-2xl font-black text-medical-600 mb-1">10%</div>
+                            <div class="text-xs font-semibold text-slate-600 uppercase tracking-wide">Sales Increase
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Technical Competencies -->
+                        <div>
+                            <h3
+                                class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-200 pb-2">
+                                <i class="fas fa-microscope text-medical-500 mr-2"></i> Technical Competencies</h3>
+                            <ul class="space-y-2 text-sm text-slate-600">
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-medical-400 mr-2"></span>Nucleic
+                                    acid extraction (manual & automated)</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-medical-400 mr-2"></span>Real-time
+                                    PCR (qPCR), conventional, one-step</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-medical-400 mr-2"></span>Molecular
+                                    diagnostic assay demos & support</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-medical-400 mr-2"></span>qPCR
+                                    Platforms: DT-Lite, StepOne, CFX, Rotor-Gene</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-medical-400 mr-2"></span>MG-NA 32
+                                    automated extraction systems</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-medical-400 mr-2"></span>Genomic
+                                    data analysis, FISH, cytogenetics</li>
+                            </ul>
+                        </div>
+
+                        <!-- Commercial Competencies -->
+                        <div>
+                            <h3
+                                class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-200 pb-2">
+                                <i class="fas fa-briefcase text-medical-500 mr-2"></i> Commercial & Personal</h3>
+                            <ul class="space-y-2 text-sm text-slate-600">
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-slate-400 mr-2"></span>Technical
+                                    sales & scientific product positioning</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-slate-400 mr-2"></span>Customer
+                                    relationship management (CRM)</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-slate-400 mr-2"></span>Market
+                                    research and competitor analysis</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-slate-400 mr-2"></span>Scientific
+                                    presentation and communication</li>
+                                <li><span class="inline-block w-2 h-2 rounded-full bg-slate-400 mr-2"></span>Digital
+                                    workflow improvement & AI automation</li>
+                            </ul>
+
+                            <div class="mt-6 pt-4 border-t border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-500 mb-2 uppercase">Language Proficiency</h4>
+                                <div class="flex gap-4">
+                                    <span
+                                        class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded font-medium">Arabic
+                                        (Native)</span>
+                                    <span
+                                        class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded font-medium">English
+                                        (B2 Upper-Int)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kit-components" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        3</div>
+                    <h2 class="text-2xl font-bold text-slate-800">KIT COMPONENTS <span
+                            class="text-sm font-normal text-slate-500 ml-2">(Professional Experience)</span></h2>
+                </div>
+
+                <div class="relative border-l-2 border-medical-200 ml-5 md:ml-6 space-y-8 pb-4">
+
+                    <!-- EXP-01 -->
+                    <div class="relative pl-8">
+                        <div
+                            class="absolute -left-3.5 top-1 w-7 h-7 bg-white border-4 border-medical-500 rounded-full shadow">
+                        </div>
+                        <div
+                            class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 md:p-6 transition hover:shadow-md">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                                <div>
+                                    <span
+                                        class="tech-font text-xs font-bold text-medical-600 bg-medical-50 px-2 py-1 rounded mb-2 inline-block">ID:
+                                        EXP-01</span>
+                                    <h3 class="text-lg font-bold text-slate-800">Field Application and Sales Specialist
+                                    </h3>
+                                    <p class="text-medical-600 font-semibold text-sm">Reme-D Inc. <span
+                                            class="text-slate-400 font-normal ml-2">| Cairo, Egypt</span></p>
+                                </div>
+                                <div
+                                    class="mt-2 md:mt-0 text-sm font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full whitespace-nowrap">
+                                    Oct 2025 – Present
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-slate-600 space-y-3">
+                                <p><strong>Primary Function:</strong> Deliver field-based technical support and customer
+                                    engagement for molecular diagnostic instruments, reagents, and laboratory workflows.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Executed ~80 demonstrations covering manual/automated extraction, conventional
+                                        PCR, qPCR, and one-step PCR.</li>
+                                    <li>Worked with ~2,000 samples across field activities, including ~1,000 HCV/HBV
+                                        samples in a major project.</li>
+                                    <li>Supported MG-NA 32 automated extraction systems and multiple qPCR platforms.
+                                    </li>
+                                    <li>Managed training and follow-up activities across 25+ client accounts.</li>
+                                    <li>Connected laboratory requirements with appropriate product applications to
+                                        support sales.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EXP-02 -->
+                    <div class="relative pl-8">
+                        <div
+                            class="absolute -left-3.5 top-1 w-7 h-7 bg-white border-4 border-slate-400 rounded-full shadow">
+                        </div>
+                        <div
+                            class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 md:p-6 transition hover:shadow-md">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                                <div>
+                                    <span
+                                        class="tech-font text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded mb-2 inline-block">ID:
+                                        EXP-02</span>
+                                    <h3 class="text-lg font-bold text-slate-800">Project Coordinator</h3>
+                                    <p class="text-slate-600 font-semibold text-sm">Science Operation Leaders in Egypt
+                                        <span class="text-slate-400 font-normal ml-2">| Giza, Egypt</span></p>
+                                </div>
+                                <div
+                                    class="mt-2 md:mt-0 text-sm font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full whitespace-nowrap">
+                                    Nov 2023 – Feb 2024
+                                </div>
+                            </div>
+                            <ul class="mt-4 text-sm text-slate-600 list-disc pl-5 space-y-1">
+                                <li>Assisted in organizing an event attended by 1,000+ participants from over 20
+                                    universities.</li>
+                                <li>Managed the organizational plan (logistics, timeline, team coordination).</li>
+                                <li>Established partnerships with five sponsors to support event funding.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- EXP-03 -->
+                    <div class="relative pl-8">
+                        <div
+                            class="absolute -left-3.5 top-1 w-7 h-7 bg-white border-4 border-slate-400 rounded-full shadow">
+                        </div>
+                        <div
+                            class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 md:p-6 transition hover:shadow-md">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                                <div>
+                                    <span
+                                        class="tech-font text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded mb-2 inline-block">ID:
+                                        EXP-03</span>
+                                    <h3 class="text-lg font-bold text-slate-800">Marketing and Sales Specialist</h3>
+                                    <p class="text-slate-600 font-semibold text-sm">Creative Egyptian Biotechnologists
+                                        <span class="text-slate-400 font-normal ml-2">| Giza, Egypt</span></p>
+                                </div>
+                                <div
+                                    class="mt-2 md:mt-0 text-sm font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full whitespace-nowrap">
+                                    May 2023 – May 2024
+                                </div>
+                            </div>
+                            <ul class="mt-4 text-sm text-slate-600 list-disc pl-5 space-y-1">
+                                <li>Represented the organization at industry events and scientific workshops.</li>
+                                <li>Directed the production of 9 podcast episodes supporting scientific communication.
+                                </li>
+                                <li>Contributed to a reported 10% increase in sales through integrated marketing
+                                    strategies.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="storage" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        4</div>
+                    <h2 class="text-2xl font-bold text-slate-800">STORAGE AND STABILITY <span
+                            class="text-sm font-normal text-slate-500 ml-2">(Education & Research)</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Education Box -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                        <div class="bg-slate-50 border-b border-slate-200 p-4 flex items-center">
+                            <i class="fas fa-university text-medical-600 text-xl mr-3"></i>
+                            <h3 class="font-bold text-slate-800">4.1 Educational Qualifications</h3>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <div class="mb-4">
+                                <h4 class="text-xl font-bold text-slate-900">Bachelor of Science (BSc)</h4>
+                                <p class="text-medical-600 font-medium mt-1">Applied Biotechnology</p>
+                                <p class="text-sm text-slate-500">Faculty of Science, Ain Shams University</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-6 border-t border-slate-100 pt-4">
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider">Graduation</p>
+                                    <p class="font-semibold text-slate-800">May 2025</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider">GPA / Grade</p>
+                                    <p class="font-semibold text-slate-800">3.4 / B+</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Project Box -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                        <div class="bg-slate-50 border-b border-slate-200 p-4 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i class="fas fa-flask text-medical-600 text-xl mr-3"></i>
+                                <h3 class="font-bold text-slate-800">4.2 Academic Project</h3>
+                            </div>
+                            <i class="fas fa-award text-yellow-500 text-xl" title="Award Winning"></i>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h4 class="text-md font-bold text-slate-900 leading-tight mb-2">Integrated Optical Biosensor
+                                Kit for Point-of-Care PSA Detection</h4>
+                            <p class="text-sm text-slate-600 mb-4">Development-oriented academic work focused on an
+                                integrated optical biosensor concept for point-of-care detection of prostate-specific
+                                antigen (PSA).</p>
+
+                            <div class="bg-yellow-50 border border-yellow-100 rounded p-3 mb-4 text-sm">
+                                <p class="font-bold text-yellow-800 mb-1"><i class="fas fa-trophy mr-1"></i> Recognition
+                                </p>
+                                <ul class="list-disc pl-5 text-yellow-700 space-y-1 text-xs">
+                                    <li>1st Place - Bio-Pioneers Competition</li>
+                                    <li>1st Place - Science Innovate Competition</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Publications Full Width -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden lg:col-span-2">
+                        <div class="bg-slate-50 border-b border-slate-200 p-4 flex items-center">
+                            <i class="fas fa-book-open text-medical-600 text-xl mr-3"></i>
+                            <h3 class="font-bold text-slate-800">4.3 Scientific Publications Profile</h3>
+                        </div>
+                        <div class="p-6 flex flex-col md:flex-row gap-6 items-start">
+                            <div class="flex-shrink-0 w-full md:w-1/3">
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Publication ID</p>
+                                    <p class="tech-font font-bold text-medical-600 mb-3">PUB-01</p>
+
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">DOI</p>
+                                    <a href="https://doi.org/10.1155/sci/1054968" target="_blank"
+                                        class="text-sm text-medical-600 hover:underline break-all inline-block mb-1">10.1155/sci/1054968
+                                        <i class="fas fa-external-link-alt text-xs"></i></a>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Beyond the Cell: Stem Cell-Derived
+                                    Exosomes as Next-Generation Tools in Regenerative Therapy</h4>
+                                <p class="text-sm text-slate-600 mb-3"><strong>Area:</strong> Regenerative medicine and
+                                    stem cell-derived exosomes.</p>
+                                <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                                    <li>Explores the potential of stem cell-derived exosomes as tools in regenerative
+                                        therapy.</li>
+                                    <li>Demonstrates engagement with emerging biotechnology research.</li>
+                                    <li>Complements practical molecular diagnostics experience with advanced therapeutic
+                                        concepts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="materials" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        5</div>
+                    <h2 class="text-2xl font-bold text-slate-800">MATERIALS AND EQUIPMENT REQUIRED</h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8">
+
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-2">5.1 Technical
+                        Equipment and Platforms</h3>
+                    <div class="overflow-x-auto mb-8">
+                        <table class="min-w-full text-sm text-left">
+                            <thead class="bg-slate-50 text-slate-600">
+                                <tr>
+                                    <th class="px-4 py-3 font-semibold rounded-tl-lg">Equipment / Platform</th>
+                                    <th class="px-4 py-3 font-semibold">Technical Application</th>
+                                    <th class="px-4 py-3 font-semibold rounded-tr-lg">Exposure Level</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">DNA Technology DT-Lite</td>
+                                    <td class="px-4 py-3">Real-time PCR</td>
+                                    <td class="px-4 py-3"><span
+                                            class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Practical
+                                            Training</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">Applied Biosystems StepOne</td>
+                                    <td class="px-4 py-3">Real-time PCR</td>
+                                    <td class="px-4 py-3"><span
+                                            class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Practical
+                                            Training</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">Bio-Rad CFX</td>
+                                    <td class="px-4 py-3">Real-time PCR</td>
+                                    <td class="px-4 py-3"><span
+                                            class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Practical
+                                            Training</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">Qiagen Rotor-Gene</td>
+                                    <td class="px-4 py-3">Real-time PCR</td>
+                                    <td class="px-4 py-3"><span
+                                            class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Practical
+                                            Training</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">MG-NA 32</td>
+                                    <td class="px-4 py-3">Automated NA Extraction</td>
+                                    <td class="px-4 py-3"><span
+                                            class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Demos &
+                                            Workflow</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">Manual extraction workflows</td>
+                                    <td class="px-4 py-3">DNA/RNA preparation</td>
+                                    <td class="px-4 py-3"><span
+                                            class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Practical
+                                            Experience</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-slate-400 mt-2 italic">* Exposure indicates training or application
+                            experience, not independent authorization to service/repair.</p>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-2">5.2 Software
+                        and Digital Tools</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <div
+                            class="flex items-center bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-md text-sm">
+                            <span class="font-semibold mr-2">MS Office</span>
+                            <div class="flex space-x-0.5">
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-md text-sm">
+                            <span class="font-semibold mr-2">Google Workspace</span>
+                            <div class="flex space-x-0.5">
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-md text-sm">
+                            <span class="font-semibold mr-2">R Language</span>
+                            <div class="flex space-x-0.5">
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
+                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-md text-sm">
+                            <span class="font-semibold mr-2">MATLAB</span>
+                            <div class="flex space-x-0.5">
+                                <div class="w-2 h-2 bg-medical-500 rounded-full"></div>
+                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
+                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-md text-sm">
+                            <span class="font-semibold mr-2 text-slate-600">Linux / Conda / RStudio</span> <span
+                                class="text-xs text-slate-500 ml-1">(Training Exposure)</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reaction" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        6</div>
+                    <h2 class="text-2xl font-bold text-slate-800">REACTION SETUP <span
+                            class="text-sm font-normal text-slate-500 ml-2">(Development Protocol)</span></h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8">
+                    <p class="text-sm text-slate-600 mb-8 border-l-4 border-medical-500 pl-3">Continuous Professional
+                        Development Protocol documenting training across molecular biology, analytical biotechnology,
+                        cytogenetics, drug design, and computational biology.</p>
+
+                    <!-- Training Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div
+                            class="border border-slate-200 rounded p-4 relative group hover:border-medical-300 transition-colors">
+                            <span
+                                class="absolute -top-2.5 right-4 bg-white px-1 tech-font text-xs text-slate-400 font-bold">TR-01
+                                | Aug 2026</span>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Genomic Data Analysis Course</h4>
+                            <p class="text-xs text-medical-600 mb-2">National Research Center</p>
+                            <p class="text-xs text-slate-600">Bioinformatics, NGS, FASTQ, Linux, Conda, R, RStudio</p>
+                        </div>
+
+                        <div
+                            class="border border-slate-200 rounded p-4 relative group hover:border-medical-300 transition-colors">
+                            <span
+                                class="absolute -top-2.5 right-4 bg-white px-1 tech-font text-xs text-slate-400 font-bold">TR-02
+                                | May 2025</span>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Molecular Biology Workshop</h4>
+                            <p class="text-xs text-medical-600 mb-2">Reme-D Inc.</p>
+                            <p class="text-xs text-slate-600">Nucleic acid extraction and dengue virus diagnosis</p>
+                        </div>
+
+                        <div
+                            class="border border-slate-200 rounded p-4 relative group hover:border-medical-300 transition-colors">
+                            <span
+                                class="absolute -top-2.5 right-4 bg-white px-1 tech-font text-xs text-slate-400 font-bold">TR-03
+                                | Jul 2023</span>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Molecular Biology Intern</h4>
+                            <p class="text-xs text-medical-600 mb-2">Babirus for Diagnosis and Research Labs</p>
+                            <p class="text-xs text-slate-600">Nucleic acid extraction, PCR, gel electrophoresis</p>
+                        </div>
+
+                        <div
+                            class="border border-slate-200 rounded p-4 relative group hover:border-medical-300 transition-colors">
+                            <span
+                                class="absolute -top-2.5 right-4 bg-white px-1 tech-font text-xs text-slate-400 font-bold">TR-04
+                                | Aug 2023</span>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Basic Protein Isolation</h4>
+                            <p class="text-xs text-medical-600 mb-2">SRTA City</p>
+                            <p class="text-xs text-slate-600">Protein isolation and purification program</p>
+                        </div>
+
+                        <div
+                            class="border border-slate-200 rounded p-4 relative group hover:border-medical-300 transition-colors md:col-span-2 flex flex-col md:flex-row md:items-center justify-between">
+                            <div>
+                                <span
+                                    class="absolute -top-2.5 right-4 bg-white px-1 tech-font text-xs text-slate-400 font-bold">Earlier
+                                    Training</span>
+                                <p class="text-sm font-semibold text-slate-800"><i
+                                        class="fas fa-layer-group text-slate-400 mr-2"></i> Foundational Programs</p>
+                            </div>
+                            <div class="text-xs text-slate-600 mt-2 md:mt-0 space-x-4">
+                                <span><strong class="text-slate-700">TR-05:</strong> Sci Research (Cairo Univ)</span>
+                                <span><strong class="text-slate-700">TR-06:</strong> Drug Design (Zewail City)</span>
+                                <span><strong class="text-slate-700">TR-07:</strong> Cytogenetics (BUC)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Development Sequence -->
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-2">6.2 Competency
+                        Development Sequence</h3>
+                    <div class="flex flex-col md:flex-row gap-2">
+                        <div class="flex-1 bg-slate-50 p-3 rounded border border-slate-200 text-center">
+                            <span
+                                class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Stage
+                                1</span>
+                            <span class="text-xs font-semibold text-slate-700">Foundational Biotech</span>
+                        </div>
+                        <div class="hidden md:flex items-center text-slate-300"><i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="flex-1 bg-slate-50 p-3 rounded border border-slate-200 text-center">
+                            <span
+                                class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Stage
+                                2</span>
+                            <span class="text-xs font-semibold text-slate-700">Practical Lab Exposure</span>
+                        </div>
+                        <div class="hidden md:flex items-center text-slate-300"><i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="flex-1 bg-medical-50 p-3 rounded border border-medical-200 text-center shadow-sm">
+                            <span
+                                class="block text-[10px] font-bold text-medical-500 uppercase tracking-widest mb-1">Stage
+                                3</span>
+                            <span class="text-xs font-bold text-medical-700">Field App & Sales</span>
+                        </div>
+                        <div class="hidden md:flex items-center text-slate-300"><i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div
+                            class="flex-1 bg-slate-50 p-3 rounded border border-slate-200 text-center border-dashed border-2">
+                            <span
+                                class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Stage
+                                4 (Ongoing)</span>
+                            <span class="text-xs font-semibold text-slate-700">Genomic Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="troubleshooting" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                            7</div>
+                        <h2 class="text-2xl font-bold text-slate-800">TROUBLESHOOTING GUIDE</h2>
+                    </div>
+                    <div
+                        class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full font-bold flex items-center shadow-sm">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> Interactive
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="bg-slate-800 text-white p-4">
+                        <h3 class="font-bold text-sm uppercase tracking-wider"><i class="fas fa-tools mr-2"></i> 7.1
+                            Professional Challenges & Corrective Actions</h3>
+                        <p class="text-xs text-slate-300 mt-1">Click on a reported problem to view the root cause and
+                            implemented solution.</p>
+                    </div>
+
+                    <div class="divide-y divide-slate-200">
+                        <!-- Issue 1 -->
+                        <div class="accordion-item">
+                            <button
+                                class="accordion-btn w-full text-left px-6 py-4 focus:outline-none flex justify-between items-center bg-white hover:bg-slate-50 transition">
+                                <span class="font-semibold text-slate-800">Optimizing Lab Performance</span>
+                                <i class="fas fa-plus text-medical-500 transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content bg-slate-50 px-6">
+                                <div class="py-4 border-t border-slate-200 text-sm">
+                                    <p class="mb-2"><strong class="text-slate-700">Possible Cause:</strong> Need to
+                                        maximize utilization of qPCR diagnostic technologies and improve user
+                                        familiarity with laboratory workflows.</p>
+                                    <div
+                                        class="bg-green-50 border-l-4 border-green-500 p-3 mt-3 text-green-900 rounded-r">
+                                        <strong>Solution:</strong> Provided technical support and training to
+                                        governmental and private-sector laboratories, helping users operate molecular
+                                        diagnostic workflows more effectively.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Issue 2 -->
+                        <div class="accordion-item">
+                            <button
+                                class="accordion-btn w-full text-left px-6 py-4 focus:outline-none flex justify-between items-center bg-white hover:bg-slate-50 transition">
+                                <span class="font-semibold text-slate-800">Expanding Market Share</span>
+                                <i class="fas fa-plus text-medical-500 transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content bg-slate-50 px-6">
+                                <div class="py-4 border-t border-slate-200 text-sm">
+                                    <p class="mb-2"><strong class="text-slate-700">Possible Cause:</strong> Low brand
+                                        visibility and challenges reaching relevant scientific audiences.</p>
+                                    <div
+                                        class="bg-green-50 border-l-4 border-green-500 p-3 mt-3 text-green-900 rounded-r">
+                                        <strong>Solution:</strong> Represented the organization at industry events and
+                                        directed nine podcast episodes; contributed to a reported 10% sales increase
+                                        through combined marketing strategies.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Issue 3 -->
+                        <div class="accordion-item">
+                            <button
+                                class="accordion-btn w-full text-left px-6 py-4 focus:outline-none flex justify-between items-center bg-white hover:bg-slate-50 transition">
+                                <span class="font-semibold text-slate-800">Managing Large-Scale Events</span>
+                                <i class="fas fa-plus text-medical-500 transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content bg-slate-50 px-6">
+                                <div class="py-4 border-t border-slate-200 text-sm">
+                                    <p class="mb-2"><strong class="text-slate-700">Possible Cause:</strong> Logistical
+                                        complexity, multiple stakeholders, tight timelines, and team coordination
+                                        requirements.</p>
+                                    <div
+                                        class="bg-green-50 border-l-4 border-green-500 p-3 mt-3 text-green-900 rounded-r">
+                                        <strong>Solution:</strong> Managed the organizational plan for an event
+                                        involving 1,000+ participants from 20+ universities and secured five sponsors.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Issue 4 -->
+                        <div class="accordion-item">
+                            <button
+                                class="accordion-btn w-full text-left px-6 py-4 focus:outline-none flex justify-between items-center bg-white hover:bg-slate-50 transition">
+                                <span class="font-semibold text-slate-800">Enhancing Report Generation</span>
+                                <i class="fas fa-plus text-medical-500 transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content bg-slate-50 px-6">
+                                <div class="py-4 border-t border-slate-200 text-sm">
+                                    <p class="mb-2"><strong class="text-slate-700">Possible Cause:</strong>
+                                        Time-consuming routine administrative tasks reducing the time available for
+                                        field activities.</p>
+                                    <div
+                                        class="bg-green-50 border-l-4 border-green-500 p-3 mt-3 text-green-900 rounded-r">
+                                        <strong>Solution:</strong> Integrated AI-based tools into routine reporting and
+                                        task workflows to improve efficiency and accelerate document preparation.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="support" class="fade-in-section scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-medical-100 text-medical-600 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                        8</div>
+                    <h2 class="text-2xl font-bold text-slate-800">TECHNICAL SUPPORT</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Contact Card -->
+                    <div class="bg-medical-600 rounded-xl shadow-lg p-8 text-white relative overflow-hidden">
+                        <!-- Decorative background element -->
+                        <i
+                            class="fas fa-headset absolute -right-10 -bottom-10 text-9xl text-medical-500 opacity-20"></i>
+
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-1">Ziad Mustafa Muhammed</h3>
+                            <p class="text-medical-200 text-sm mb-6 pb-4 border-b border-medical-500">Field Application
+                                and Sales Specialist</p>
+
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex items-center hover:translate-x-1 transition-transform cursor-pointer"
+                                    onclick="copyToClipboard('ziadmustafamuhammed@gmail.com', 'Email copied!')">
+                                    <div class="w-8 h-8 rounded bg-medical-500 flex justify-center items-center mr-3"><i
+                                            class="fas fa-envelope"></i></div>
+                                    <span>ziadmustafamuhammed@gmail.com</span>
+                                </li>
+                                <li class="flex items-center hover:translate-x-1 transition-transform cursor-pointer"
+                                    onclick="copyToClipboard('+20 100 247 0735', 'Phone number copied!')">
+                                    <div
+                                        class="w-8 h-8 rounded bg-medical-500 flex justify-center items-center mr-3 tech-font">
+                                        <i class="fas fa-phone"></i></div>
+                                    <span class="tech-font">+20 100 247 0735</span>
+                                </li>
+                                <li class="flex items-center hover:translate-x-1 transition-transform">
+                                    <a href="https://linkedin.com/in/ziad-mustafa-abdelwahab" target="_blank"
+                                        class="flex items-center w-full">
+                                        <div
+                                            class="w-8 h-8 rounded bg-medical-500 flex justify-center items-center mr-3">
+                                            <i class="fab fa-linkedin-in"></i></div>
+                                        <span>LinkedIn Profile</span>
+                                    </a>
+                                </li>
+                                <li class="flex items-center hover:translate-x-1 transition-transform">
+                                    <a href="https://orcid.org/0009-0009-8374-8885" target="_blank"
+                                        class="flex items-center w-full">
+                                        <div
+                                            class="w-8 h-8 rounded bg-medical-500 flex justify-center items-center mr-3">
+                                            <i class="fab fa-orcid"></i></div>
+                                        <span>ORCID: 0009-0009-8374-8885</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Toast Notification (Hidden by default) -->
+                        <div id="toast"
+                            class="absolute top-4 right-4 bg-white text-medical-800 text-xs font-bold px-3 py-2 rounded shadow-lg transform translate-y-[-200%] transition-transform duration-300 z-20">
+                            Copied!
+                        </div>
+                    </div>
+
+                    <!-- Engagement Statement -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col justify-center">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-2"><i
+                                class="fas fa-handshake text-medical-500 mr-2"></i> Professional Engagement</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed italic border-l-2 border-slate-300 pl-4 py-1">
+                            "Committed to combining scientific understanding, field-based technical experience, and
+                            commercial awareness to help laboratories adopt molecular technologies and help life science
+                            organizations deliver practical value to their customers. Interested in opportunities that
+                            encourage continuous learning, cross-functional collaboration, international exposure, and
+                            measurable professional impact."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="mt-16 pt-8 border-t-2 border-slate-300 text-center md:text-left fade-in-section">
+                <div class="flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 tech-font">
+                    <div class="mb-4 md:mb-0">
+                        <strong class="text-slate-700">DOCUMENT ID:</strong> IFU-CV-001 <span class="mx-2">|</span>
+                        <strong class="text-slate-700">VERSION:</strong> 1.0 <span class="mx-2">|</span>
+                        <strong class="text-slate-700">ISSUE YEAR:</strong> 2026
+                    </div>
+                    <div>
+                        CLASSIFICATION: <span class="font-bold text-slate-700">FOR PROFESSIONAL USE ONLY</span>
+                    </div>
+                </div>
+                <div class="mt-4 text-[10px] text-slate-400 text-center max-w-2xl mx-auto md:mx-0 md:text-left">
+                    <p>MANUFACTURED BY: Ziad Mustafa Muhammed (2026) | All rights reserved.</p>
+                    <p class="mt-1 italic">Professional portfolio document. The IFU-inspired structure is a presentation
+                        format and does not imply medical device regulatory approval, certification, or manufacturer
+                        authorization.</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const sidebar = document.getElementById('sidebar');
+            let isMenuOpen = false;
+
+            mobileBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    sidebar.classList.remove('-translate-x-full');
+                    mobileBtn.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    mobileBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+                }
+            });
+
+            // Close menu on link click (mobile)
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        sidebar.classList.add('-translate-x-full');
+                        mobileBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+                        isMenuOpen = false;
+                    }
+                });
+            });
+
+            // 2. Accordion Logic for Troubleshooting Section
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.fas.fa-plus, .fas.fa-minus');
+
+                    // Close all others
+                    document.querySelectorAll('.accordion-content').forEach(c => {
+                        if (c !== content && c.classList.contains('open')) {
+                            c.classList.remove('open');
+                            const otherIcon = c.previousElementSibling.querySelector('i');
+                            otherIcon.classList.replace('fa-minus', 'fa-plus');
+                            otherIcon.classList.remove('rotate-180');
+                        }
+                    });
+
+                    // Toggle current
+                    content.classList.toggle('open');
+
+                    if (content.classList.contains('open')) {
+                        icon.classList.replace('fa-plus', 'fa-minus');
+                        icon.classList.add('rotate-180');
+                    } else {
+                        icon.classList.replace('fa-minus', 'fa-plus');
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+
+            // 3. Scroll Spy (Highlight active nav link)
+            const sections = document.querySelectorAll('section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-medical-600', 'bg-medical-50');
+                    link.classList.add('text-slate-600');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('text-medical-600', 'bg-medical-50');
+                        link.classList.remove('text-slate-600');
+                    }
+                });
+            });
+
+            // 4. Fade-in on scroll interaction using Intersection Observer
+            const fadeElements = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: Unobserve after fading in once
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% visible
+                rootMargin: "0px 0px -50px 0px" // Slightly before it comes into view completely
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // 5. Copy to Clipboard Function (No alert)
+        function copyToClipboard(text, msg) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Show custom toast notification instead of alert()
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.remove('translate-y-[-200%]');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-[-200%]');
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
